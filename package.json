@@ -1,0 +1,13 @@
+{
+  "name": "@gotocva/queue",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": false,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["nodejs", "queue", "in-memory queue", "event queue", "job queue", "task queue", "retry mechanism", "backoff", "async jobs", "event-driven", "task processing", "lightweight queue", "no redis", "simple queue", "job scheduler", "nodejs tasks", "node event queue", "auto-retry", "task management", "message queue"],
+  "author": "sivabharathy",
+  "license": "MIT",
+  "description": "Gotocva Queue is a lightweight, in-memory event queue for Node.js that allows you to manage asynchronous tasks efficiently without requiring Redis or any external dependencies. It supports job retries with customizable attempts and backoff strategies, making it ideal for handling event-driven workflows, task scheduling, and job processing in a simple yet effective manner."
+}
