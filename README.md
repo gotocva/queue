@@ -1,6 +1,3 @@
-Here's a complete **README.md** for your `@gotocva-queue` library:  
-
----
 
 # 📦 @gotocva-queue  
 **An in-memory event queue for Node.js with retry and backoff support.**  
