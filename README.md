@@ -1,10 +1,10 @@
 
-# 📦 @gotocva-queue  
+# 📦 @gotocva/queue  
 **An in-memory event queue for Node.js with retry and backoff support.**  
 
-[![NPM Version](https://img.shields.io/npm/v/@gotocva-queue.svg)](https://www.npmjs.com/package/@gotocva-queue)  
-[![License](https://img.shields.io/npm/l/@gotocva-queue.svg)](https://github.com/@gotocva/queue/blob/main/LICENSE)  
-[![Downloads](https://img.shields.io/npm/dt/@gotocva-queue.svg)](https://www.npmjs.com/package/@gotocva-queue)  
+[![NPM Version](https://img.shields.io/npm/v/@gotocva/queue.svg)](https://www.npmjs.com/package/@gotocva/queue)  
+[![License](https://img.shields.io/npm/l/@gotocva/queue.svg)](https://github.com/gotocva/queue/blob/main/LICENSE)  
+[![Downloads](https://img.shields.io/npm/dt/@gotocva/queue.svg)](https://www.npmjs.com/package/@gotocva/queue)  
 
 ---
 
@@ -20,12 +20,12 @@
 ## 📥 Installation  
 Install via **npm**:  
 ```sh
-npm install @gotocva-queue
+npm install @gotocva/queue
 ```
 
 Install via **yarn**:  
 ```sh
-yarn add @gotocva-queue
+yarn add @gotocva/queue
 ```
 
 ---
@@ -34,7 +34,7 @@ yarn add @gotocva-queue
 
 ### 1️⃣ **Basic Example**  
 ```javascript
-const Queue = require('@gotocva-queue');
+const Queue = require('@gotocva/queue');
 
 const jobQueue = new Queue();
 
@@ -103,7 +103,7 @@ queue.on('process', async (job, resolve, reject) => {
 
 ### **Simulating API Calls & Retrying on Failure**
 ```javascript
-const Queue = require('@gotocva-queue');
+const Queue = require('@gotocva/queue');
 const axios = require('axios');
 
 const apiQueue = new Queue();
@@ -140,7 +140,7 @@ apiQueue.add({ url: 'https://jsonplaceholder.typicode.com/posts/1' }, { attempts
 
 ---
 
-## 📌 Why Use `@gotocva-queue`?  
+## 📌 Why Use `@gotocva/queue`?  
 
 ✅ **No Dependencies** → No need for Redis or external services  
 ✅ **Simple API** → Just add jobs and listen for events  
@@ -151,7 +151,7 @@ apiQueue.add({ url: 'https://jsonplaceholder.typicode.com/posts/1' }, { attempts
 
 ## ⚖️ Comparison with Other Queues  
 
-| Feature            | @gotocva-queue  | Bull (Redis) | Kue (Redis) |
+| Feature            | @gotocva/queue  | Bull (Redis) | Kue (Redis) |
 |--------------------|---------------|-------------|-------------|
 | **No Redis Required** | ✅ Yes  | ❌ No  | ❌ No  |
 | **Retry & Backoff** | ✅ Yes  | ✅ Yes  | ✅ Yes  |

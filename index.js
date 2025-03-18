@@ -31,14 +31,14 @@ class Queue extends EventEmitter {
     while (job.attempts > 0) {
       try {
         await this.emitAsync('process', job);
-        console.log(`✅ Job completed: ${JSON.stringify(job)}`);
+        if(process.env.NODE_ENV != 'production') console.log(`✅ Job completed: ${JSON.stringify(job)}`);
         break; // Job succeeded, exit retry loop
       } catch (error) {
-        console.error(`❌ Job failed, attempts left: ${job.attempts - 1}`, error);
+        if(process.env.NODE_ENV != 'production') console.error(`❌ Job failed, attempts left: ${job.attempts - 1}`, error);
         job.attempts--;
 
         if (job.attempts > 0) {
-          console.log(`⏳ Retrying job in ${job.backoff}ms...`);
+          if(process.env.NODE_ENV != 'production') console.log(`⏳ Retrying job in ${job.backoff}ms...`);
           await this.sleep(job.backoff);
         }
       }
