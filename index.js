@@ -1,6 +1,8 @@
 const EventEmitter = require('events');
 
 class Queue extends EventEmitter {
+
+  showLog = false;
   constructor() {
     super();
     this.queue = [];
@@ -15,6 +17,7 @@ class Queue extends EventEmitter {
   add(job, options = { attempts: 3, backoff: 5000 }) {
     job.attempts = options.attempts;
     job.backoff = options.backoff;
+    if(options.showLog) this.showLog = options.showLog;
     this.queue.push(job);
     this.process();
   }
@@ -31,14 +34,14 @@ class Queue extends EventEmitter {
     while (job.attempts > 0) {
       try {
         await this.emitAsync('process', job);
-        if(process.env.NODE_ENV != 'production') console.log(`✅ Job completed: ${JSON.stringify(job)}`);
+        if(this.showLog == true) console.log(`✅ Job completed: ${JSON.stringify(job)}`);
         break; // Job succeeded, exit retry loop
       } catch (error) {
-        if(process.env.NODE_ENV != 'production') console.error(`❌ Job failed, attempts left: ${job.attempts - 1}`, error);
+        if(this.showLog == true) console.error(`❌ Job failed, attempts left: ${job.attempts - 1}`, error);
         job.attempts--;
 
         if (job.attempts > 0) {
-          if(process.env.NODE_ENV != 'production') console.log(`⏳ Retrying job in ${job.backoff}ms...`);
+          if(this.showLog == true) console.log(`⏳ Retrying job in ${job.backoff}ms...`);
           await this.sleep(job.backoff);
         }
       }
